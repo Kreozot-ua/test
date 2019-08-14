@@ -1,0 +1,18 @@
+.header {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.item {
+    color: lightskyblue;
+    text-decoration: none;
+}
+
+.item:hover {
+    text-decoration: underline;
+}
+
+.item.-active {
+    color: #ff2e49;
+}

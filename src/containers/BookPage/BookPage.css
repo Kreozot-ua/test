@@ -1,0 +1,22 @@
+div.book-page {
+    padding: 40px 30px;
+    background-color: #1b1b1b;
+    color: #fff;
+}
+
+div.book-page .author {
+    color: lightskyblue;
+    text-decoration: none;
+}
+
+div.book-page .author:hover {
+    text-decoration: underline;
+}
+
+div.book-page .star {
+    fill: #ffab09;
+}
+
+div.book-page .genre-link {
+    text-decoration: none;
+}

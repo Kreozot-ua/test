@@ -1,0 +1,30 @@
+.books-list .book {
+    padding: 15px 15px 15px 78px;
+    position: relative;
+    background-color: #282c34;
+    color: lightskyblue;
+}
+
+.books-list .book:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.books-list .book .link {
+    color: lightskyblue;
+    text-decoration: none;
+}
+
+.books-list .book .link:hover {
+    text-decoration: underline;
+}
+
+.books-list .book .button {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+}
+
+.books-list .book .star {
+    fill: #ffab09;
+}

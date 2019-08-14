@@ -1,0 +1,16 @@
+div.author-page {
+    padding: 40px 30px;
+    background-color: #1b1b1b;
+    color: #fff;
+}
+
+div.author-page .link {
+    display: block;
+    color: lightskyblue;
+    text-decoration: none;
+    margin-bottom: 3px;
+}
+
+div.author-page .link:hover {
+    text-decoration: underline;
+}
