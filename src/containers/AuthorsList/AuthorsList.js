@@ -28,7 +28,6 @@ export class AuthorsList extends React.PureComponent {
 
   render() {
     const {authors} = this.props;
-    console.log(authors);
     return (
       this.props.loading ?
         <Loader /> :

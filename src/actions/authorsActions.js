@@ -61,22 +61,25 @@ function fetchAuthorList(books) {
 
 export function loadAuthorByName(name) {
   return (dispatch, getState) => {
-    const { items } = getState().authors;
-    let author = items[name];
-    if(!author) {
-      loadAuthorsList()(dispatch, getState).then((response) => {
-        author = response[name];
+    return new Promise((resolve) => {
+      const { items } = getState().authors;
+      let author = items[name];
+      if(!author) {
+        loadAuthorsList()(dispatch, getState).then((response) => {
+          author = response[name];
+          dispatch({
+            type: TYPES.SET_CURRENT_OPENED_AUTHOR,
+            payload: author
+          });
+        });
+      } else {
         dispatch({
           type: TYPES.SET_CURRENT_OPENED_AUTHOR,
           payload: author
         });
-      });
-    } else {
-      dispatch({
-        type: TYPES.SET_CURRENT_OPENED_AUTHOR,
-        payload: author
-      });
-    }
+        resolve(author)
+      }
+    });
   }
 }
 

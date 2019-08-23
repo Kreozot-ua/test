@@ -33,8 +33,9 @@ export function loadBooksList() {
 
 export function handleFavoritesList(id) {
   return (dispatch, getState) => {
-    localStorage.getItem('saved-favorites');
+    const saved = localStorage.getItem('saved-favorites');
     let { favorites } = getState().books;
+    favorites = favorites.length ? favorites : saved || [];
     if(favorites.includes(id)) {
       favorites = favorites.filter(item => item !== id);
       dispatch({
@@ -54,22 +55,25 @@ export function handleFavoritesList(id) {
 
 export function loadBookById(id) {
   return (dispatch, getState) => {
-    const { items } = getState().books;
-    let book = items.find(item => item.id === parseInt(id));
-    if(!book) {
-      loadBooksList()(dispatch).then(() => {
-        const { items } = getState().books;
-        book = items.find(item => item.id === parseInt(id));
+    return new Promise((resolve) => {
+      const { items } = getState().books;
+      let book = items.find(item => item.id === parseInt(id));
+      if(!book) {
+        loadBooksList()(dispatch).then(() => {
+          const { items } = getState().books;
+          book = items.find(item => item.id === parseInt(id));
+          dispatch({
+            type: TYPES.SET_CURRENT_OPENED_BOOK,
+            payload: book
+          });
+        });
+      } else {
         dispatch({
           type: TYPES.SET_CURRENT_OPENED_BOOK,
           payload: book
         });
-      });
-    } else {
-      dispatch({
-        type: TYPES.SET_CURRENT_OPENED_BOOK,
-        payload: book
-      });
-    }
+      }
+      resolve(book);
+    });
   }
 }

@@ -28,7 +28,7 @@ export class BooksList extends React.PureComponent {
               return (
                 !type ||
                 (type === "genres" && book.genre === genre)) ||
-              (type === "favorites" && favorites.includes(book.id)) ?
+                (type === "favorites" && favorites.includes(book.id)) ?
                 <Book key={book.id} inFavorites={favorites.includes(book.id)} book={book}/> : ""
             })
           }
